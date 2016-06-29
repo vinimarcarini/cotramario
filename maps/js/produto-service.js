@@ -1,16 +1,16 @@
 angular.module('app.crud')
 
-.service('cidadeService', function( $q, $window ) { 
-	var keystore = 'cidades';
+.service('ProdutoService', function( $q, $window ) { 
+	var keystore = 'produtos';
 	
 	function listAll() {
 		 return angular.fromJson($window.localStorage[keystore] || []);
 	}
-	function deleteFiltred( cidades ) {
+	function deleteFiltred( produtos ) {
         var deferred = $q.defer();
         
         //Filtra, deixando apenas os que serão excluídos
-        var filtrados = cidades.filter(function(item){
+        var filtrados = produtos.filter(function(item){
             if (!item.selecionado)
                 return item;
         });
@@ -21,27 +21,29 @@ angular.module('app.crud')
         
         return deferred.promise;
 	}
-	function saveObject( cidade ) {
+	function saveObject( produto ) {
 		var deferred = $q.defer();
         
-        //Pega todos os cidades do localstorage
-        var cidades = listAll();
+        //Pega todos os produtos do localstorage
+        var produtos = listAll();
 		
         //Verifica se deve editar (existe um atributo index) ou incluir (sem o atributo)
-		if ( cidade.index ) {
+		if ( (produto.index )|| (produto.index ==0)) {
             var prdAux = {
-                nome: cidade.nome,
-                grupo: cidade.grupo
+                nome: produto.nome,
+                grupo: produto.grupo,
+                preco: produto.preco,
+                qtdade: produto.qtdade
             };
             
-            cidades[cidade.index] = prdAux;
+            produtos[produto.index] = prdAux;
         } else {
-            cidades.push(cidade);    
+            produtos.push(produto);    
         }
         
 		//Adiciona array no localstorage
-        $window.localStorage[keystore] = angular.toJson(cidades);
-        deferred.resolve(cidades);
+        $window.localStorage[keystore] = angular.toJson(produtos);
+        deferred.resolve(produtos);
         
         return deferred.promise;
 	}

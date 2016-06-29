@@ -1,16 +1,16 @@
 angular.module('app.crud')
 
-.service('gmapService', function( $q, $window ) { 
-	var keystore = 'gmaps';
+.service('GrupoService', function( $q, $window ) { 
+	var keystore = 'grupos';
 	
 	function listAll() {
 		 return angular.fromJson($window.localStorage[keystore] || []);
 	}
-	function deleteFiltred( gmaps ) {
+	function deleteFiltred( grupos ) {
         var deferred = $q.defer();
         
         //Filtra, deixando apenas os que serão excluídos
-        var filtrados = gmaps.filter(function(item){
+        var filtrados = grupos.filter(function(item){
             if (!item.selecionado)
                 return item;
         });
@@ -21,27 +21,26 @@ angular.module('app.crud')
         
         return deferred.promise;
 	}
-	function saveObject( gmap ) {
+	function saveObject( grupo ) {
 		var deferred = $q.defer();
         
-        //Pega todos os gmaps do localstorage
-        var gmaps = listAll();
-		
+        //Pega todos os grupos do localstorage
+        var grupos = listAll();
+        
         //Verifica se deve editar (existe um atributo index) ou incluir (sem o atributo)
-		if ( gmap.index ) {
-            var prdAux = {
-                nome: gmap.nome,
-                grupo: gmap.grupo
+		if ( (grupo.index )|| (grupo.index ==0)) {
+            var grpAux = {
+                nome: grupo.nome
             };
             
-            gmaps[gmap.index] = prdAux;
+            grupos[grupo.index] = grpAux;
         } else {
-            gmaps.push(gmap);    
+            grupos.push(grupo);    
         }
         
 		//Adiciona array no localstorage
-        $window.localStorage[keystore] = angular.toJson(gmaps);
-        deferred.resolve(gmaps);
+        $window.localStorage[keystore] = angular.toJson(grupos);
+        deferred.resolve(grupos);
         
         return deferred.promise;
 	}

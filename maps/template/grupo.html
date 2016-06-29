@@ -1,0 +1,48 @@
+<main-menu></main-menu>
+
+<h1>Cadastro de Grupos</h1>
+        
+<!-- Exibe os dados -->
+<div class="panel panel-primary">
+	<div class="panel-heading">Listagem de Grupos</div>
+	<div class="panel-body">
+		<div class="input-group">
+			<div class="input-group-addon"><span class="glyphicon glyphicon-search"></span></div>
+			<input type="text" class="form-control input-busca" ng-model="criterioBusca" placeholder="O que você está buscando?" />
+		</div>
+		<p ng-if="grupos.length == 0" class="text-danger">Não existem registros para serem exibidos!</p>
+		<table ng-if="grupos.length > 0" class="table table-striped table-condensed">
+			<thead>
+				<tr>
+					<th width="20px"></th>
+					<th>
+						<a href="" ng-click="ordenarPor('nome')">Nome Grupo</a>
+					</th>
+                    <th width="20px"></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-class="{selecionado: grupo.selecionado}" ng-repeat="grupo in grupos | filter:{nome: criterioBusca} | orderBy:criterioOrdenacao:direcaoOrdenacao">
+					<td><input type="checkbox" ng-model="grupo.selecionado" /></td>
+					<td>{{ grupo.nome }}</td>
+                    <td><button class="btn btn-warning btn-xs glyphicon glyphicon-edit" title="Editar registro" ng-click="editar($index, grupo)"></button></td>
+				</tr>
+			</tbody>
+		</table>
+		<button ng-if="((grupos.length > 0) && (isSelecionado(grupos)))" class="btn btn-danger pull-right" ng-click="remover(grupos)">Remover Selecionados</button>
+	</div>
+	<div class="panel-footer">
+		<h3>Cadastrar Grupo</h3>
+		<form name="grupoForm">
+			<input type="text" class="form-control" ng-model="grupo.nome" 
+				   placeholder="Nome do Grupo"  ng-required="true" ng-minlength="3" 
+				   ng-maxlength="30" name="nome"/>
+			<div class="msg-error" ng-show="grupoForm.nome.$dirty">
+				<small ng-show="grupoForm.nome.$error.required">* Campo obrigatório</small>
+				<small ng-show="grupoForm.nome.$error.minlength">* O campo deve ter mais de 3 caracteres</small>
+				<small ng-show="grupoForm.nome.$error.maxlength">* O campo deve ter menos de 30 caractesres</small>
+			</div>
+		</form>
+		<button class="btn btn-primary btn-block" ng-click="salvar(grupo)" ng-disabled="grupoForm.$invalid">Salvar Grupo</button>
+	</div>
+</div>

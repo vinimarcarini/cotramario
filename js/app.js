@@ -1,19 +1,14 @@
-angular.module('app.crud',['ngRoute'])
+angular.module('app.cotramario',['ngRoute'])
 
 .config(['$routeProvider', function($routeProvider) {
 	$routeProvider
 	
-	.when('/grupos', {
+	.when('/home', {
         templateUrl: 'template/grupo.html',
         controller: 'GrupoCtrl'
     })
 	
-	.when('/produtos', {
-        templateUrl: 'template/produto.html',
-        controller: 'ProdutoCtrl'
-    });
-	
-    $routeProvider.otherwise ({ redirectTo: '/produtos' });
+    $routeProvider.otherwise ({ redirectTo: '/home' });
 }])
 
 .directive( 'mainMenu', function() {
