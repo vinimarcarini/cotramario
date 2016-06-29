@@ -25,7 +25,7 @@ angular.module('app.crud')
 		var deferred = $q.defer();
         
         //Pega todos os estados do localstorage
-        var Estados = listAll();
+        var estados = listAll();
         
         //Verifica se deve editar (existe um atributo index) ou incluir (sem o atributo)
 		if ( grupo.index ) {
