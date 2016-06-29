@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br" ng-app="app.crud">
+<head>
+    <meta charset="utf-8" />
+    <title>Exemplo CRUD</title>
+    
+    <!-- Bootstrap core CSS -->
+    <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" /> 
+	<link href="css/estilo.css" rel="stylesheet" /> 
+    
+    <!-- Library -->
+    <script src="lib/angularjs/angular.min.js"></script>
+	<script src="lib/angularjs/angular-route.min.js"></script>
+	<script src="lib/angularjs/angular-locale_pt-br.js"></script>
+	
+    
+    <!-- JavaScript da Aplicação-->
+    <script src="app.js"></script>  
+    
+    <!-- JavaScript de Service's-->
+    <script src="js/estado-service.js"></script>
+    <script src="js/cidade-service.js"></script>
+    <script src="js/maps-service.js"></script>
+    
+    <!-- JavaScript de Controller's-->
+	<script src="js/estado-controller.js"></script>
+    <script src="js/cidade-controller.js"></script>
+    <script src="js/maps-controller.js"></script>
+</head>
+<body>
+    
+    
+    
+    <div class="container">
+        <div ng-view></div>
+    </div>
+</body>
+</html>

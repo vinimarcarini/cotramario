@@ -1,0 +1,48 @@
+<main-menu></main-menu>
+
+<h1>Cadastro de estados</h1>
+        
+<!-- Exibe os dados -->
+<div class="panel panel-primary">
+	<div class="panel-heading">Listagem de estados</div>
+	<div class="panel-body">
+		<div class="input-group">
+			<div class="input-group-addon"><span class="glyphicon glyphicon-search"></span></div>
+			<input type="text" class="form-control input-busca" ng-model="criterioBusca" placeholder="O que você está buscando?" />
+		</div>
+		<p ng-if="estados.length == 0" class="text-danger">Não existem registros para serem exibidos!</p>
+		<table ng-if="estados.length > 0" class="table table-striped table-condensed">
+			<thead>
+				<tr>
+					<th width="20px"></th>
+					<th>
+						<a href="" ng-click="ordenarPor('nome')">Nome estado</a>
+					</th>
+                    <th width="20px"></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-class="{selecionado: estado.selecionado}" ng-repeat="estado in estados | filter:{nome: criterioBusca} | orderBy:criterioOrdenacao:direcaoOrdenacao">
+					<td><input type="checkbox" ng-model="estado.selecionado" /></td>
+					<td>{{ estado.nome }}</td>
+                    <td><button class="btn btn-warning btn-xs glyphicon glyphicon-edit" title="Editar registro" ng-click="editar($index, estado)"></button></td>
+				</tr>
+			</tbody>
+		</table>
+		<button ng-if="((estados.length > 0) && (isSelecionado(estados)))" class="btn btn-danger pull-right" ng-click="remover(estados)">Remover Selecionados</button>
+	</div>
+	<div class="panel-footer">
+		<h3>Cadastrar estado</h3>
+		<form name="estadoForm">
+			<input type="text" class="form-control" ng-model="estado.nome" 
+				   placeholder="Nome do estado"  ng-required="true" ng-minlength="3" 
+				   ng-maxlength="30" name="nome"/>
+			<div class="msg-error" ng-show="estadoForm.nome.$dirty">
+				<small ng-show="estadoForm.nome.$error.required">* Campo obrigatório</small>
+				<small ng-show="estadoForm.nome.$error.minlength">* O campo deve ter mais de 3 caracteres</small>
+				<small ng-show="estadoForm.nome.$error.maxlength">* O campo deve ter menos de 30 caractesres</small>
+			</div>
+		</form>
+		<button class="btn btn-primary btn-block" ng-click="salvar(estado)" ng-disabled="estadoForm.$invalid">Salvar estado</button>
+	</div>
+</div>

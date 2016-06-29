@@ -1,0 +1,43 @@
+.container {
+    width: 650px;
+}
+.container h1 {
+    margin: 40px 0px;
+}        
+.panel-footer {
+    padding: 20px 70px 40px 70px;
+}
+.panel-footer h3 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+.panel-footer .form-control {
+    margin-bottom: 5px;
+}
+.panel-footer button {
+    margin-top: 10px;
+}
+.selecionado {
+    background-color: #ffffcc !important;
+}
+.msg-erro {
+    color: #D20000;
+    margin-bottom: 10px;
+    padding-left: 10px;
+}
+.input-group {
+    margin-bottom: 15px;
+}
+tfoot td { 
+	font-weight: bold;
+}
+.text-danger {
+	padding: 30px 0px;
+	font-size: 16px;
+	text-align: center;
+}
+.msg-error {
+    color: #D20000;
+    margin-bottom: 10px;
+    padding-left: 10px;
+}
