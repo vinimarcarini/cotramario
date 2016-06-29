@@ -2,7 +2,7 @@ angular.module('app.crud')
 
 .controller('CidadeCtrl', function ( $scope, estadoService, cidadeService ) {    
     
-	$scope.Estados = estadoService.$list();
+	$scope.estados = estadoService.$list();
 	
 	$scope.cidades = cidadeService.$list();
 	
