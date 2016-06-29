@@ -1,33 +1,47 @@
 angular.module('app.crud')
 
-.service('gmpsService', function( $q, $window ) { 
+.service('gmapService', function( $q, $window ) { 
 	var keystore = 'gmaps';
 	
 	function listAll() {
 		 return angular.fromJson($window.localStorage[keystore] || []);
 	}
-    
-	function saveObject( maps ) {
+	function deleteFiltred( gmaps ) {
+        var deferred = $q.defer();
+        
+        //Filtra, deixando apenas os que serão excluídos
+        var filtrados = gmaps.filter(function(item){
+            if (!item.selecionado)
+                return item;
+        });
+        
+        //Adiciona array no localstorage
+        $window.localStorage[keystore] = angular.toJson(filtrados);
+        deferred.resolve(filtrados);
+        
+        return deferred.promise;
+	}
+	function saveObject( gmap ) {
 		var deferred = $q.defer();
         
-        //Pega todos os cidades do localstorage
-        var maps = listAll();
+        //Pega todos os gmaps do localstorage
+        var gmaps = listAll();
 		
         //Verifica se deve editar (existe um atributo index) ou incluir (sem o atributo)
-		if ( map.index ) {
+		if ( gmap.index ) {
             var prdAux = {
-                nome: maps.nome,
-                grupo: maps.grupo
+                nome: gmap.nome,
+                grupo: gmap.grupo
             };
             
-            cidades[cidade.index] = prdAux;
+            gmaps[gmap.index] = prdAux;
         } else {
-            cidades.push(cidade);    
+            gmaps.push(gmap);    
         }
         
 		//Adiciona array no localstorage
-        $window.localStorage[keystore] = angular.toJson(cidades);
-        deferred.resolve(cidades);
+        $window.localStorage[keystore] = angular.toJson(gmaps);
+        deferred.resolve(gmaps);
         
         return deferred.promise;
 	}
