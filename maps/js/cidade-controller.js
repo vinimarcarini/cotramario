@@ -22,12 +22,12 @@ angular.module('app.crud')
     }
 
     //Adicionar
-    $scope.salvar = function(Cidade) {
-        cidadeService.$save(Cidade).then(function(data){
+    $scope.salvar = function(cidade) {
+        cidadeService.$save(cidade).then(function(data){
             $scope.cidades = data;
             //Remove o objeto do escope, fazendo com que os campos sejam limpos
-            delete $scope.Cidade;
-            $scope.CidadeForm.$setPristine();
+            delete $scope.cidade;
+            $scope.cidadeForm.$setPristine();
         });
     };
     

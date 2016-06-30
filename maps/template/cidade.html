@@ -22,7 +22,7 @@
                 <tr ng-class="{selecionado: cidade.selecionado}" ng-repeat="cidade in cidades | filter:{nome: criterioBusca} | orderBy: criterioOrdenacao:direcaoOrdenacao">
                     <td><input type="checkbox" ng-model="cidade.selecionado" /> </td>
                     <td>{{ cidade.nome }}</td>
-                    <td>{{ cidade.estado.nome }}</td>
+                    <td>{{ cidade.grupo.nome }}</td>
                     <td><button class="btn btn-warning btn-xs glyphicon glyphicon-edit" title="Editar registro" ng-click="editar($index, cidade)"></button></td>
                 </tr>
             </tbody>

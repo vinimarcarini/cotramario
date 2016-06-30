@@ -25,7 +25,7 @@ angular.module('app.crud')
             $scope.estados = data;
             //Remove o objeto do escope, fazendo com que os campos sejam limpos
             delete $scope.Estado;
-            $scope.EstadoForm.$setPristine();
+            $scope.estadoForm.$setPristine();
         });
     };
     

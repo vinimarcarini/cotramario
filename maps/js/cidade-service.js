@@ -28,13 +28,13 @@ angular.module('app.crud')
         var cidades = listAll();
 		
         //Verifica se deve editar (existe um atributo index) ou incluir (sem o atributo)
-		if ( cidade.index ) {
-            var prdAux = {
+	if ( cidades.index ) {
+            var grpAux = {
                 nome: cidade.nome,
                 grupo: cidade.grupo
             };
             
-            cidades[cidade.index] = prdAux;
+            cidades[cidade.index] = grpAux;
         } else {
             cidades.push(cidade);    
         }
