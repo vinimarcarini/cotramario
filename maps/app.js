@@ -10,7 +10,7 @@ angular.module('app.crud',['ngRoute'])
 	
 	.when('/cidades', {
         templateUrl: 'template/cidade.html',
-        controller: 'CidadeCtrl',
+        controller: 'cidadeCtrl',
     });
 	
     $routeProvider.otherwise ({ redirectTo: '/estados' });

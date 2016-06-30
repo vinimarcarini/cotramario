@@ -1,6 +1,6 @@
 angular.module('app.crud')
 
-.controller('CidadeCtrl', function ( $scope, estadoService, cidadeService ) {    
+.controller('cidadeCtrl', function ( $scope, estadoService, cidadeService ) {    
     
 	$scope.estados = estadoService.$list();
 	
@@ -39,8 +39,20 @@ angular.module('app.crud')
     };
     
     //Editar
-    $scope.editar = function(index, Cidade) {
-        $scope.Cidade = angular.copy(Cidade);
-        $scope.Cidade.index = index;
+    $scope.editar = function(index, cidade) {
+        $scope.cidade = angular.copy(cidade);
+        $scope.cidade.index = index;
     };
+})
+.filter('sumQtdPreco', function () {
+    return function ( data ) {        
+        if (angular.isUndefined(data)) 
+            return 0;
+        
+        var sum = 0;
+        angular.forEach(data,function(value,key){
+            sum = sum + (parseInt(value['qtdade']) * parseFloat(value['preco']));
+        });
+        return sum;
+    }
 });

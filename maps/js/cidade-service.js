@@ -18,7 +18,7 @@ angular.module('app.crud')
         //Adiciona array no localstorage
         $window.localStorage[keystore] = angular.toJson(filtrados);
         deferred.resolve(filtrados);
-        
+
         return deferred.promise;
 	}
 	function saveObject( cidade ) {
@@ -28,13 +28,14 @@ angular.module('app.crud')
         var cidades = listAll();
 		
         //Verifica se deve editar (existe um atributo index) ou incluir (sem o atributo)
-	if ( cidades.index ) {
-            var grpAux = {
+		if ( cidade.index ) {
+            var prdAux = {
                 nome: cidade.nome,
-                grupo: cidade.grupo
+                grupo: cidade.grupo,
+                geocode: cidade.geocode
             };
             
-            cidades[cidade.index] = grpAux;
+            cidades[cidade.index] = prdAux;
         } else {
             cidades.push(cidade);    
         }

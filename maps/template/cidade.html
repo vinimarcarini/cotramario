@@ -15,6 +15,7 @@
                     <th width="20px"></th>
                     <th><a href="" ng-click="ordernarPor('nome')">Nome cidade</a></th>
                     <th width="100px"><a href="" ng-click="ordernarPor('estado')">estado</a></th>
+                    <th width="50px" class="text-center">GeoCode</th>
                     <th width="20px"></th>
                 </tr>
             </thead>
@@ -22,7 +23,8 @@
                 <tr ng-class="{selecionado: cidade.selecionado}" ng-repeat="cidade in cidades | filter:{nome: criterioBusca} | orderBy: criterioOrdenacao:direcaoOrdenacao">
                     <td><input type="checkbox" ng-model="cidade.selecionado" /> </td>
                     <td>{{ cidade.nome }}</td>
-                    <td>{{ cidade.grupo.nome }}</td>
+                    <td>{{ cidade.estado.nome }}</td>
+                    <td class="text-center">{{ cidade.geocode }}</td>
                     <td><button class="btn btn-warning btn-xs glyphicon glyphicon-edit" title="Editar registro" ng-click="editar($index, cidade)"></button></td>
                 </tr>
             </tbody>
@@ -46,7 +48,15 @@
             <div class="msg-erro" ng-show="cidadeForm.estado.$dirty && cidadeForm.estado.$invalid">
                 <small ng-show="cidadeForm.estado.$error.required">* Campo obrigatório</small>
             </div>
-                    </form>
-        <button class="btn btn-primary btn-block" ng-click="salvar(cidade) ||salvar(maps) " ng-disabled="cidadeForm.$invalid">Salvar cidade</button>
+            <div class="row">
+                <div class="col-md-6">
+                    <input type="text" class="form-control" name="geocode" ng-model="cidade.geocode" placeholder="geocode" ng-required="true"/>
+                    <div class="msg-erro" ng-show="cidadeForm.geocode.$dirty && cidadeForm.qtdade.$invalid">
+                        <small ng-show="cidadeForm.qtdade.$error.required">* Campo obrigatório</small>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <button class="btn btn-primary btn-block" ng-click="salvar(cidade)" ng-disabled="cidadeForm.$invalid">Salvar cidade</button>
     </div>
 </div>
