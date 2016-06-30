@@ -5,7 +5,7 @@ License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 -->
 <!DOCTYPE html>
-<html ng-app="ngMap">
+<html ng-app="app.index">
     <head>
         <title>Cotramario</title>
         <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
@@ -16,13 +16,31 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta name="keywords" content="Cotramario Cooperativa dos Transportadores Autonomos de Mariopolis" />
         <script src="https://maps.google.com/maps/api/js?libraries=placeses,visualization,drawing,geometry,places"></script>
-        <script src="/js/angularjs/angular.min.js"></script>
-        <script src="/js/ng-map.min.js"></script>
-	   
+
+        <!-- Library -->
+        <script src="maps/lib/angularjs/angular.min.js"></script>
+        <script src="maps/lib/angularjs/angular-route.min.js"></script>
+        <script src="maps/lib/angularjs/angular-locale_pt-br.js"></script>
+
         <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
-		<link rel="stylesheet" type="text/css" href="css/subscribe-better.css" /> 
-		<script type="text/javascript" src="js/jquery.subscribe-better.js"></script>	
-       
+        <link rel="stylesheet" type="text/css" href="css/subscribe-better.css" /> 
+        <script type="text/javascript" src="js/jquery.subscribe-better.js"></script>	
+
+        <!-- JavaScript da Aplicação-->
+        <script src="app.js"></script>
+        <script src="maps/app.js"></script>  
+
+        <!-- JavaScript de Service's-->
+        <script src="maps/js/estado-service.js"></script>
+        <script src="maps/js/cidade-service.js"></script>
+        <script src="maps/js/maps-service.js"></script>
+
+        <!-- JavaScript de Controller's-->
+        <script src="maps/js/estado-controller.js"></script>
+        <script src="maps/js/cidade-controller.js"></script>
+        <script src="maps/js/maps-controller.js"></script>
+
+
         <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
         <script src="js/jquery.chocolat.js"></script>
         <link rel="stylesheet" href="css/chocolat.css" type="text/css" media="screen" charset="utf-8">
@@ -58,79 +76,79 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     <ul>
                         <li class="active"><a href="index.html" class="scroll">Inicial</a></li>
                         <li><a href="#sobre" class="scroll">Sobre a Empresa</a></li>
-                        <li><a href="#servico" class="scroll">ServiÃ§os</a></li>
+                        <li><a href="#servico" class="scroll">Serviços</a></li>
                         <li><a href="#parceiros" class="scroll">Empresas Parceiras</a></li>
                         <li><a href="#filiais" class="scroll">Filiais</a></li>
-                        </li>
-                    <li><a href="#diretoria" class="scroll">Diretores</a></li>
-                    <li><a href="#contato" class="scroll">Contato</a></li>
+                        <li><a href="#diretoria" class="scroll">Diretores</a></li>
+                        <li><a href="#contato" class="scroll">Contato</a></li>
                     </ul>
-                <!--script-->
-                <script>
-                    $("span.menu").click(function(){
-                        $(".top-nav ul").slideToggle(500, function(){
+                    <!--script-->
+                    <script>
+                        $("span.menu").click(function(){
+                            $(".top-nav ul").slideToggle(500, function(){
+                            });
                         });
-                    });
-                </script>				
+                    </script>				
+                </div>
             </div>
         </div>
-        </div>
-    <!---->
+        <!---->
 
-    <div class="container">
-        <!--content-top-->
-        <div class="content-top" >
-            <div class="content-top1">
-                <div class=" col-sm-4 grid-top">
-                    <div class="top-grid">
-                        <i class="glyphicon glyphicon-leaf"></i>
-
-                        <h3>Certificados de Qualidade</h3>
-                        <p> ISO 9000 <br/>
-                            ISO 9001</p>
-                    </div>
-                    <i class="arrow"></i>
-                    <i class="arrow2"> </i>
-                </div>
-                <div class=" col-sm-4 grid-top">
-                    <div class="top-grid">
-                        <i class="glyphicon glyphicon-cog"></i>
-
-                        <h3>Processo de ServiÃ§o</h3>
-                        <p>Conhecimentos de Frete CT-e &nbsp;<br/>
-                            Conhecimentos MDF-e&nbsp;<br/>
-                            Vale PedÃ¡gio Bradesco</p>                            
-                    </div>
-                    <i class="arrow"></i>
-                    <i class="arrow2"> </i>
-                </div>
-                <div class=" col-sm-4 grid-top">
-                    <div class="top-grid">
-                        <i  class="glyphicon glyphicon-time"></i>
-
-                        <h3>Agilidade de Processo</h3>
-                        <p>Prazo de Carregamento<br/>
-                            Prazo de Descarga<br/ >
-                            Pagamento em Conta</p>
-                    </div>
-                    <i class="arrow"></i>
-                    <i class="arrow2"> </i>
-                </div>                                     
-                <div class="clearfix"> </div>
-            </div>
-        </div>
-        <!--//content-top-->
-
-    </div>
-    <div class="content-middle" id="sobre">
         <div class="container">
-            <div class="content-mid">
-                <h3>Empresa Solidada desde o ano de 2007 no ramo de transportes. </h3>
-                <label> </label>
-                <p>No dia 13 de outubro de 2007 deu-se inÃ­cio Ã  Cotramario (Cooperativa dos Transportadores AutÃ´nomos de MariÃ³polis). Surgiu a idÃ©ia de montar a nossa Cooperativa que proporcionaria inÃºmeros benefÃ­cios e tendo em seu foco principal o (sÃ³cio), dando-lhe apoio e suporte para que ele nÃ£o se sinta um mero motorista e sim um transportador, peÃ§a fundamental no desenvolvimento de nosso PaÃ­s, tanta disposiÃ§Ã£o e acima de tudo determinaÃ§Ã£o dessas pessoas que acreditaram e confiaram em si mesmas.</p>
-            </div>  
-            <div class="content-mid2">
-                <!-- Imagens e texto. ver para V2.0
+            <!--content-top-->
+            <div class="content-top" >
+                <div class="content-top1">
+                    <div class=" col-sm-4 grid-top">
+                        <div class="top-grid">
+                            <i class="glyphicon glyphicon-leaf"></i>
+
+                            <h3>Certificados de Qualidade</h3>
+                            <p> ISO 9000 <br/>
+                                ISO 9001</p>
+                        </div>
+                        <i class="arrow"></i>
+                        <i class="arrow2"> </i>
+                    </div>
+                    <div class=" col-sm-4 grid-top">
+                        <div class="top-grid">
+                            <i class="glyphicon glyphicon-cog"></i>
+
+                            <h3>Processo de Serviço</h3>
+                            <p>Conhecimentos de Frete CT-e &nbsp;<br/>
+                                Conhecimentos MDF-e&nbsp;<br/>
+                                Vale PedÃ¡gio Bradesco</p>                            
+                        </div>
+                        <i class="arrow"></i>
+                        <i class="arrow2"> </i>
+                    </div>
+                    <div class=" col-sm-4 grid-top">
+                        <div class="top-grid">
+                            <i  class="glyphicon glyphicon-time"></i>
+
+                            <h3>Agilidade de Processo</h3>
+                            <p>Prazo de Carregamento<br/>
+                                Prazo de Descarga<br/ >
+                                Pagamento em Conta</p>
+                        </div>
+                        <i class="arrow"></i>
+                        <i class="arrow2"> </i>
+                    </div>                                     
+                    <div class="clearfix"> </div>
+                </div>
+            </div>
+            <!--//content-top-->
+
+        </div>
+        <div class="content-middle" id="sobre">
+            <div class="container">
+                <div class="content-mid">
+                    <h3>Empresa Solidada desde o ano de 2007 no ramo de transportes. </h3>
+                    <label> </label>
+                    <p>No dia 13 de outubro de 2007 deu-se início á  Cotramario (Cooperativa dos Transportadores Autônomos de Mariópolis). Surgiu a idéia de montar a nossa Cooperativa que proporcionaria inúmeros benefícios e tendo em seu foco principal o (sócio), dando-lhe apoio e suporte para que ele não se sinta um mero motorista e sim um transportador, peça fundamental no desenvolvimento de nosso País, tanta disposicão e acima de tudo determinação dessas pessoas que acreditaram e confiaram em si mesmas.</p>
+                </div>  
+                <div class="content-mid2">
+
+                    <!-- Imagens e texto. ver para V2.0
 <div class="col-sm-4 content-mid3">
 <img src="images/ab.jpg" alt="" class="img-responsive">
 <h5>It is a long established fact</h5>
@@ -148,316 +166,324 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 </div>
 <div class="clearfix"> </div> 
 -->
-            </div> 
-        </div>
-    </div>
-    <!---->
-    <div class="content-bottom" id="servico">
-        <div class="container">
-            <div class="services-top ">
-                <h2>ServiÃ§os</h2>
-                <label></label>
-                <p>Trabalhamos com diversos setores do transporte conheÃ§a alguns serviÃ§os prestados.</p>
+
+                </div> 
             </div>
-            <div class="us-choose">
-                <div class="col-md-6 why-choose">
-                    <div class="  ser-grid ">
-                        <i class=" glyphicon glyphicon-wrench"> </i>
+        </div>
+        <!---->
+        <div class="content-bottom" id="servico">
+            <div class="container">
+                <div class="services-top ">
+                    <h2>Serviços</h2>
+                    <label></label>
+                    <p>Trabalhamos com diversos setores do transporte conheça alguns serviços prestados.</p>
+                </div>
+                <div class="us-choose">
+                    <div class="col-md-6 why-choose">
+                        <div class="  ser-grid ">
+                            <i class=" glyphicon glyphicon-wrench"> </i>
+                        </div>
+                        <div class="ser-top "> 
+                            <h5>Mecânica</h5>
+                            <p>Temos uma Mecânica especializada para nossos associados</p>
+                        </div>
+                        <div class="clearfix"> </div>
                     </div>
-                    <div class="ser-top "> 
-                        <h5>MecÃ¢nica</h5>
-                        <p>Temos uma MecÃ¢nica especializada para nossos associados</p>
+                    <div class="col-md-6 why-choose">
+                        <div class=" ser-grid">
+                            <i class="glyphicon glyphicon-cd"> </i>
+                        </div>
+                        <div class="ser-top "> 
+                            <h5>Borracharia</h5>
+                            <p>Desenvolvida totalmente para o conforto do associado, sendo rápida e Ágil</p>
+                        </div>
+                        <div class="clearfix"> </div>
                     </div>
                     <div class="clearfix"> </div>
                 </div>
-                <div class="col-md-6 why-choose">
-                    <div class=" ser-grid">
-                        <i class="glyphicon glyphicon-cd"> </i>
+                <div class="us-choose">
+                    <div class="col-md-6 why-choose">
+                        <div class="  ser-grid ">
+                            <i class="glyphicon glyphicon-globe"> </i>
+                        </div>
+                        <div class="ser-top "> 
+                            <h5>Postos de Combustiveis</h5>
+                            <p>Grandes numeros de parcerias nas redes de combustiveis espalhados pelo Brasil</p>
+                        </div>
+                        <div class="clearfix"> </div>
                     </div>
-                    <div class="ser-top "> 
-                        <h5>Borracharia</h5>
-                        <p>Desenvolvida totalmente para o conforto do associado, sendo rÃ¡pida e Ã¡gil</p>
-                    </div>
-                    <div class="clearfix"> </div>
-                </div>
-                <div class="clearfix"> </div>
-            </div>
-            <div class="us-choose">
-                <div class="col-md-6 why-choose">
-                    <div class="  ser-grid ">
-                        <i class="glyphicon glyphicon-globe"> </i>
-                    </div>
-                    <div class="ser-top "> 
-                        <h5>Postos de Combustiveis</h5>
-                        <p>Grandes numeros de parcerias nas redes de combustiveis espalhados pelo Brasil</p>
-                    </div>
-                    <div class="clearfix"> </div>
-                </div>
-                <div class="col-md-6 why-choose">
-                    <div class=" ser-grid">
-                        <i  class="glyphicon glyphicon-eye-open"> </i>
-                    </div>
-                    <div class="ser-top "> 
-                        <h5>Vendas de Produtos</h5>
-                        <p>Venda de Lonas, Pneus, etc</p>
+                    <div class="col-md-6 why-choose">
+                        <div class=" ser-grid">
+                            <i  class="glyphicon glyphicon-eye-open"> </i>
+                        </div>
+                        <div class="ser-top "> 
+                            <h5>Vendas de Produtos</h5>
+                            <p>Venda de Lonas, Pneus, etc</p>
+                        </div>
+                        <div class="clearfix"> </div>
                     </div>
                     <div class="clearfix"> </div>
                 </div>
-                <div class="clearfix"> </div>
             </div>
         </div>
-    </div>
 
-    <!--gallery-starts-->
-    <div class="gallery" id="parceiros">
-        <div class="gallery-top ">
-            <h3>Empresas Parceiras</h3>
-            <label> </label>
-        </div>
-        <div class="gallery-wrapper">
-            <ul>
-                <li>
-                    <figure class="img-wrapper fade"><a class="fancybox" href="images/ab2.jpg"><img  src="thumbnails/ab2.jpg"><h4>Cooperativa Alfa</h4></a></figure>
-                </li>
-
-                <li>
-                    <figure class="img-wrapper fade"><a class="fancybox" href="images/camisc.jpg"><img src="thumbnails/camisc.jpg"><h4>Cooperativa Camisc</h4></a></figure>
-                </li>
-
-                <li>
-                    <figure class="img-wrapper fade"><a class="fancybox" href="images/grupoturim-png.png"><img src="thumbnails/grupoturim.jpg"><h4>Lavoura Turim</h4></a></figure>
-                </li>
-                <br>
-                <li>
-                    <figure class="img-wrapper fade"><a class="fancybox" href="images/Santa%20Rosa.jpg"><img  src="thumbnails/Santa%20Rosa.jpg"><h4>Santa Rosa Agroindustrial</h4></a></figure>
-                </li>
-                <li>
-                    <figure class="img-wrapper fade"><a class="fancybox" href="images/Heringer.JPG"><img src="thumbnails/Heringer.jpg"><h4>Fertilizantes Heringer</h4></a></figure>
-                </li>
-                <li>
-                    <figure class="img-wrapper fade"><a class="fancybox" href="images/siviero.png"><img src="thumbnails/siviero.jpg"><h4>Siviero Cereais</h4></a></figure>
-                </li>
-                <br>
-            </ul>
-        </div>
-
-    </div>
-    <!--gallery-end-->
-    <!--features-starts-->
-    <div class="filiais" id="filiais">
-        <div class="container">
-            <div class="filiais-top ">
-                <h3>Filiais</h3>
-                <label></label>
-                <p>Confira Algumas Filiais espalhadas pelo Brasil.</p>
+        <!--gallery-starts-->
+        <div class="gallery" id="parceiros">
+            <div class="gallery-top ">
+                <h3>Empresas Parceiras</h3>
+                <label> </label>
             </div>
-            <div class="filiais-bottom">
-                <div class="col-md-6 festure-left">
-                    <div class="f-left">
-                        <img class="img-responsive" src="images/logo.png" alt="" />
-                    </div>
-                    <div class="f-right">
-                        <ul>
-                            <li><a href="#"><i class="glyphicon glyphicon-ok"></i>Matriz MariÃ³polis-PR</a></li>
-                            <li><a href="#"><i class="glyphicon glyphicon-ok"></i>Localizada no Posto Chiarani</a></li>
-                            <li><a href="#"><i class="glyphicon glyphicon-ok"></i>Telefone: 46 3226-1906</a></li>
-                        </ul>
-                    </div>
-                    <div class="clearfix"></div>
-                </div>
-                <div class="col-md-6 festure-left">
-                    <div class="f-left">
-                        <img class="img-responsive" src="images/logo.png" alt="" />
-                    </div>
-                    <div class="f-right">
-                        <ul>
-                            <li><a href="#"><i class="glyphicon glyphicon-ok"></i>ClevelÃ¢ndia - PR</a></li>
-                            <li><a href="#"><i class="glyphicon glyphicon-ok"></i>Localizada no Posto Cigarra</a></li>
-                            <li><a href="#"><i class="glyphicon glyphicon-ok"></i>Telefone: 46 3252-3235</a></li>
-                        </ul>
-                    </div>
-                    <div class="clearfix"></div>
-                </div>
-                <div class="clearfix"></div>
-            </div>
-            <div class="filiais-bottom">
-                <div class="col-md-6 festure-left">
-                    <div class="f-left">
-                        <img class="img-responsive" src="images/logo.png" alt="" />
-                    </div>
-                    <div class="f-right">
-                        <ul>
-                            <li><a href="#"><i class="glyphicon glyphicon-ok"></i>Posto de Atendimento ParanaguÃ¡</a></li>
-                            <li><a href="#"><i class="glyphicon glyphicon-ok"></i>Atendimento Externo</a></li>
-                        </ul>
-                    </div>
-                    <div class="clearfix"></div>
-                </div>
-                <div class="col-md-6 festure-left">
-                    <div class="f-left">
-                        <img class="img-responsive" src="images/logo.png" alt="" />
-                    </div>
-                    <div class="f-right">
-                        <ul>
-                            <li><a href="#"><i class="glyphicon glyphicon-ok"></i>Posto de Atendimento Dourados-MS</a></li>
-                            <li><a href="#"><i class="glyphicon glyphicon-ok"></i>Atendimento Externo</a></li>
-                        </ul>
-                    </div>
-                    <div class="clearfix"></div>
-                </div>
-                <div class="clearfix"></div>
-            </div>
-        </div>
-    </div>
-    <!--Filiais-end-->
+            <div class="gallery-wrapper">
+                <ul>
+                    <li>
+                        <figure class="img-wrapper fade"><a class="fancybox" href="images/ab2.jpg"><img  src="thumbnails/ab2.jpg"><h4>Cooperativa Alfa</h4></a></figure>
+                    </li>
 
-    <!--Diretoria-->
-    <div class="team" id="diretoria">
-        <div class="container">
-            <div class="team-main">
-                <div class="team-top">
-                    <h3>Diretores e Cooperados</h3>
-                    <label> </label>
-                </div>
-                <ul class="ch-grid">
                     <li>
-                        <a href="#"><div class="ch-item ch-img-1">
-                            <div class="ch-info">
-                                <h3>Diretores</h3>
-                                <p>2016</p>
-                            </div>
-                            </div></a>
+                        <figure class="img-wrapper fade"><a class="fancybox" href="images/camisc.jpg"><img src="thumbnails/camisc.jpg"><h4>Cooperativa Camisc</h4></a></figure>
+                    </li>
+
+                    <li>
+                        <figure class="img-wrapper fade"><a class="fancybox" href="images/grupoturim-png.png"><img src="thumbnails/grupoturim.jpg"><h4>Lavoura Turim</h4></a></figure>
+                    </li>
+                    <br>
+                    <li>
+                        <figure class="img-wrapper fade"><a class="fancybox" href="images/Santa%20Rosa.jpg"><img  src="thumbnails/Santa%20Rosa.jpg"><h4>Santa Rosa Agroindustrial</h4></a></figure>
                     </li>
                     <li>
-                        <a href="#"><div class="ch-item ch-img-2">
-                            <div class="ch-info">
-                                <h3>Conselho Fiscal</h3>
-                                <p>2016</p>
-                            </div>
-                            </div></a>
+                        <figure class="img-wrapper fade"><a class="fancybox" href="images/Heringer.JPG"><img src="thumbnails/Heringer.jpg"><h4>Fertilizantes Heringer</h4></a></figure>
                     </li>
                     <li>
-                        <a href="#"><div class="ch-item ch-img-3">
-                            <div class="ch-info">
-                                <h3>Agriculture</h3>
-                                <p>by Daniel Nyari </p>
-                            </div>
-                            </div></a>
+                        <figure class="img-wrapper fade"><a class="fancybox" href="images/siviero.png"><img src="thumbnails/siviero.jpg"><h4>Siviero Cereais</h4></a></figure>
                     </li>
-                    <li>
-                        <a href="#"><div class="ch-item ch-img-4">
-                            <div class="ch-info">
-                                <h3>Agriculture</h3>
-                                <p>by Daniel Nyari</p>
-                            </div>
-                            </div></a>
-                    </li>
+                    <br>
                 </ul>
-                <div class="clearfix"> </div>
             </div>
-        </div>
-    </div>
-    <div class="contact" id="contato">
-        <div class="container">
-            <div class="contact-top">
-                <h3>Contato</h3>
-            </div>
-            <div class="col-md-8 contact-form">
-                <form>
-                    <input type="text" placeholder="Nome" id="nomeid"/>
-                    <input type="email" placeholder="E-mail" id="emailid"/>
-                    <input type="text" placeholder="Telefone"id="telid"/>
-                    <textarea placeholder="Mensagem"id="mensid"></textarea>
-                    <input type="submit" onclick="Enviar();" value="Enviar"/>
-                </form>
 
-            </div>
-            <div class="col-md-4 contact-para">
-                <p>Entre em contato por e-mail ou ligue em uma de nossas Filiais e serÃ¡ bem atendido.</p>
-                <div class="address-more">
-                    <h4>EndereÃ§o Matriz</h4>
-                    <p><b>Cooperativa dos Transportadores Autonomos de MariÃ³polis</b></p>
-                    <p>Telefone: (46) 3226-1906</p>
-                    <p>Rua 11, 1028. MariÃ³pois-PR</p> 
+        </div>
+        <!--gallery-end-->
+        <!--features-starts-->
+        <div class="filiais" id="filiais">
+            <div class="container">
+                <div class="filiais-top ">
+                    <h3>Filiais</h3>
+                    <label></label>
+                    <p>Confira Algumas Filiais espalhadas pelo Brasil.</p>
+                </div>
+                <div class="filiais-bottom">
+                    <div class="col-md-6 festure-left">
+                        <div class="f-left">
+                            <img class="img-responsive" src="images/logo.png" alt="" />
+                        </div>
+                        <div class="f-right">
+                            <ul>
+                                <li><a href="#"><i class="glyphicon glyphicon-ok"></i>Matriz Mariópolis-PR</a></li>
+                                <li><a href="#"><i class="glyphicon glyphicon-ok"></i>Localizada no Posto Chiarani</a></li>
+                                <li><a href="#"><i class="glyphicon glyphicon-ok"></i>Telefone: 46 3226-1906</a></li>
+                            </ul>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="col-md-6 festure-left">
+                        <div class="f-left">
+                            <img class="img-responsive" src="images/logo.png" alt="" />
+                        </div>
+                        <div class="f-right">
+                            <ul>
+                                <li><a href="#"><i class="glyphicon glyphicon-ok"></i>Clevelândia - PR</a></li>
+                                <li><a href="#"><i class="glyphicon glyphicon-ok"></i>Localizada no Posto Cigarra</a></li>
+                                <li><a href="#"><i class="glyphicon glyphicon-ok"></i>Telefone: 46 3252-3235</a></li>
+                            </ul>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="filiais-bottom">
+                    <div class="col-md-6 festure-left">
+                        <div class="f-left">
+                            <img class="img-responsive" src="images/logo.png" alt="" />
+                        </div>
+                        <div class="f-right">
+                            <ul>
+                                <li><a href="#"><i class="glyphicon glyphicon-ok"></i>Posto de Atendimento Paranaguá¡</a></li>
+                                <li><a href="#"><i class="glyphicon glyphicon-ok"></i>Atendimento Externo</a></li>
+                            </ul>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="col-md-6 festure-left">
+                        <div class="f-left">
+                            <img class="img-responsive" src="images/logo.png" alt="" />
+                        </div>
+                        <div class="f-right">
+                            <ul>
+                                <li><a href="#"><i class="glyphicon glyphicon-ok"></i>Posto de Atendimento Dourados-MS</a></li>
+                                <li><a href="#"><i class="glyphicon glyphicon-ok"></i>Atendimento Externo</a></li>
+                            </ul>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="clearfix"></div>
                 </div>
             </div>
         </div>
-    </div>
-   	<div class="map">   
-    	<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3574.9842138515696!2d-52.553167585264006!3d-26.35937257670057!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94e548f372f1f93b%3A0xee5e6ca5e7067121!2sAuto+Posto+Chiarani!5e0!3m2!1spt-BR!2sus!4v1460919807883" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
-    </div>
+        <!--Filiais-end-->
 
-<div class="main">
-				<div class="page_container">
-					<div class="subscribe-me">
-						<h2>Cadastre-se</h2>
-						<a href="#close" class="sb-close-btn">x</a>
-						<p>Receba nossas ofertas de Fretes diariamente</p>
-						<form name ="cadastroForm">
-                            <input type="nome" name="nome" ng-model="cadastro.nome" placeholder="Nome" ng-required="true" ng-minlength="3" ng-maxlength="20" >
-                            <div class="msg-erro" ng-show="cadastroForm.nome.$dirty && cadastroForm.nome.$invalid">
-                                <small ng-show="cadastroForm.nome.$error.required">* Campo obrigatório</small>
-                                <small ng-show="cadastroForm.nome.$error.minlength">* O "Nome do Produto" deve ter mais que 3 caracteres</small>
-                                <small ng-show="cadastroForm.nome.$error.maxlength">* O "Nome do Produto" deve ter menos que 20 caracteres</small>
-                            </div>
-                            &nbsp &nbsp &nbsp
-                            <input type="telefone" name="telefone" ng-model="cadastro.telefone" placeholder="Telefone" ng-required="true" ng-minlength="3" ng-maxlength="20">
-                            <div class="msg-erro" ng-show="cadastroForm.telefone.$dirty && cadastroForm.telefone.$invalid">
-                                <small ng-show="cadastroForm.telefone.$error.required">* Campo obrigatório</small>
-                                <small ng-show="cadastroForm.telefone.$error.minlength">* O "Nome do Produto" deve ter mais que 3 caracteres</small>
-                                <small ng-show="cadastroForm.telefone.$error.maxlength">* O "Nome do Produto" deve ter menos que 20 caracteres</small>
-                            </div>
-                            <br>
-                            <input type="email" name="email" ng-model="cadastro.email" placeholder="Endereço de e-mail" ng-required="true" ng-minlength="3" ng-maxlength="20" >
-                            <div class="msg-erro" ng-show="cadastroForm.email.$dirty && cadastroForm.email.$invalid">
-                                <small ng-show="cadastroForm.email.$error.required">* Campo obrigatório</small>
-                                <small ng-show="cadastroForm.email.$error.minlength">* O "Nome do Produto" deve ter mais que 3 caracteres</small>
-                                <small ng-show="cadastroForm.email.$error.maxlength">* O "Nome do Produto" deve ter menos que 20 caracteres</small>
-                            </div>    
-							<input type="submit" value="Enviar" ng-click="salvar(cadastro)" ng-disabled="cadastroForm.$invalid">
-						</form>  
-					</div>
-				</div>
-			</div>
-<!-- Container -->
-		<script type="text/javascript">
-			$(document).ready( function() {
-				$(".subscribe-me").subscribeBetter({
-					trigger: "onload",
-				});
-			});
-		</script>
-
-    <div class="footer">
-        <div class="container">
-            <div class="footer-bottom">
-                <div class="col-sm-8 footer-menu">
-                    <ul>
-                        <li class="active"><a href="index.html" class="scroll">Inicial</a></li>
-                        <li><a href="#sobre" class="scroll">Sobre a Empresa</a></li>
-                        <li><a href="#servico" class="scroll">ServiÃ§os</a></li>
-                        <li><a href="#parceiros" class="scroll">Empresas Parceiras</a></li>
-                        <li><a href="#filiais" class="scroll">Filiais</a></li>
+        <!--Diretoria-->
+        <div class="team" id="diretoria">
+            <div class="container">
+                <div class="team-main">
+                    <div class="team-top">
+                        <h3>Diretores e Cooperados</h3>
+                        <label> </label>
+                    </div>
+                    <ul class="ch-grid">
+                        <li>
+                            <a href="#"><div class="ch-item ch-img-1">
+                                <div class="ch-info">
+                                    <h3>Diretores</h3>
+                                    <p>2016</p>
+                                </div>
+                                </div></a>
+                        </li>
+                        <li>
+                            <a href="#"><div class="ch-item ch-img-2">
+                                <div class="ch-info">
+                                    <h3>Conselho Fiscal</h3>
+                                    <p>2016</p>
+                                </div>
+                                </div></a>
+                        </li>
+                        <li>
+                            <a href="#"><div class="ch-item ch-img-3">
+                                <div class="ch-info">
+                                    <h3>Agriculture</h3>
+                                    <p>by Daniel Nyari </p>
+                                </div>
+                                </div></a>
+                        </li>
+                        <li>
+                            <a href="#"><div class="ch-item ch-img-4">
+                                <div class="ch-info">
+                                    <h3>Agriculture</h3>
+                                    <p>by Daniel Nyari</p>
+                                </div>
+                                </div></a>
+                        </li>
                     </ul>
+                    <div class="clearfix"> </div>
                 </div>
-                <div class="col-sm-4 footer-top1">
-                    <ul class="social">
-                        <li><a href="#"><i> </i></a></li>
-                        <li><a href="#"><i class="twitter"> </i></a></li>						
-                        <li><a href="#"><i class="linked"> </i></a></li>
-                        <li><a href="#"><i class="dribble"> </i></a></li>
-                    </ul>
-                </div>
-                <div class="clearfix"></div>
             </div>
-            <div class="footer-top2">
-                <p >Â©2016 Cooperativa dos Transportadores AutÃ´nomos de MariÃ³polis</p>
-            </div>
-
         </div>
+        <div class="contact" id="contato">
+            <div class="container">
+                <div class="contact-top">
+                    <h3>Contato</h3>
+                </div>
+                <div class="col-md-8 contact-form">
+                    <form>
+                        <input type="text" placeholder="Nome" id="nomeid"/>
+                        <input type="email" placeholder="E-mail" id="emailid"/>
+                        <input type="text" placeholder="Telefone"id="telid"/>
+                        <textarea placeholder="Mensagem"id="mensid"></textarea>
+                        <input type="submit" onclick="Enviar();" value="Enviar"/>
+                    </form>
+
+                </div>
+                <div class="col-md-4 contact-para">
+                    <p>Entre em contato por e-mail ou ligue em uma de nossas Filiais e será bem atendido.</p>
+                    <div class="address-more">
+                        <h4>EndereÃ§o Matriz</h4>
+                        <p><b>Cooperativa dos Transportadores Autonomos de Mariópolis</b></p>
+                        <p>Telefone: (46) 3226-1906</p>
+                        <p>Rua 11, 1028. Mariópois-PR</p> 
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="map">   
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3574.9842138515696!2d-52.553167585264006!3d-26.35937257670057!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94e548f372f1f93b%3A0xee5e6ca5e7067121!2sAuto+Posto+Chiarani!5e0!3m2!1spt-BR!2sus!4v1460919807883" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+        </div>
+
+        <div class="main">
+            <div class="page_container">
+                <div class="subscribe-me">
+                    <h2>Cadastre-se</h2>
+                    <a href="#close" class="sb-close-btn">x</a>
+                    <p>Receba nossas ofertas de Fretes diariamente</p>
+
+
+                    <form name ="cadastroForm">
+                        <input class="form-control" type="nome" name="nome" ng-model="cadastro.nome" placeholder="Nome" ng-required="true" ng-minlength="3" ng-maxlength="50" >
+                        <br>
+                        <input class="form-control" type="telefone" name="telefone" ng-model="cadastro.telefone" placeholder="Telefone" ng-required="true" ng-minlength="3" ng-maxlength="11">
+                        <br>
+                        <input class="form-control" type="email" name="email" ng-model="cadastro.email" placeholder="Endereço de e-mail" ng-required="true" ng-minlength="3" ng-maxlength="20" >
+                        <br>
+                        
+                        <select class="form-control" name="estado" ng-model="cadastro.estado" ng-options="estado.nome for estado in estados | orderBy:'nome'" 
+                                ng-required="true">
+                            <option value="">Selecione um estado </option>
+                        </select>
+                        <br>
+
+                        <select class="form-control" name="cidade" ng-model="cadastro.cidade" ng-options="estado.nome for estado in estados | orderBy:'nome'" 
+                                ng-required="true">
+                            <option value="">Selecione um cidade </option>
+                        </select>
+                        <div class="msg-erro" ng-show="cidadeForm.estado.$dirty && cidadeForm.estado.$invalid">
+                            <small ng-show="cidadeForm.estado.$error.required">* Campo obrigatório</small>
+                        </div>
+
+                        <button class="btn btn-primary btn-block" ng-click="salvar(cadastro)" >Salvar</button>
+                        
+                    </form>  
+                </div>
+            </div>
+        </div>
+        <!-- Container -->
         <script type="text/javascript">
-            $(document).ready(function() {
-                /*
+            $(document).ready( function() {
+                $(".subscribe-me").subscribeBetter({
+                    trigger: "onload",
+                });
+            });
+        </script>
+
+        <div class="footer">
+            <div class="container">
+                <div class="footer-bottom">
+                    <div class="col-sm-8 footer-menu">
+                        <ul>
+                            <li class="active"><a href="index.html" class="scroll">Inicial</a></li>
+                            <li><a href="#sobre" class="scroll">Sobre a Empresa</a></li>
+                            <li><a href="#servico" class="scroll">Serviços</a></li>
+                            <li><a href="#parceiros" class="scroll">Empresas Parceiras</a></li>
+                            <li><a href="#filiais" class="scroll">Filiais</a></li>
+                            <li><a href="#diretoria" class="scroll">Diretores</a></li>
+                            <li><a href="#contato" class="scroll">Contato</a></li>
+                            <li><a href="admin.html" target="_blank" >Administrativo</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-4 footer-top1">
+                        <ul class="social">
+                            <li><a href="#"><i> </i></a></li>
+                            <li><a href="#"><i class="twitter"> </i></a></li>						
+                            <li><a href="#"><i class="linked"> </i></a></li>
+                            <li><a href="#"><i class="dribble"> </i></a></li>
+                        </ul>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="footer-top2">
+                    <p >2016 Cooperativa dos Transportadores Autônomos de MariÃ³polis</p>
+                </div>
+
+            </div>
+            <script type="text/javascript">
+                $(document).ready(function() {
+                    /*
 							var defaults = {
 					  			containerID: 'toTop', // fading element id
 								containerHoverID: 'toTopHover', // fading element hover id
@@ -465,33 +491,33 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 								easingType: 'linear' 
 					 		};
 							*/
-                $().UItoTop({ easingType: 'easeOutQuart' });
+                    $().UItoTop({ easingType: 'easeOutQuart' });
+                });
+            </script>
+            <a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+        </div>
+        <script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
+        <script type="text/javascript" src="js/jquery-migrate-1.2.1.min.js"></script>
+        <script type="text/javascript" src="js/jquery.fancybox-1.3.4.pack.min.js"></script>
+        <script type="text/javascript">
+            $(function($){
+                var addToAll = false;
+                var gallery = true;
+                var titlePosition = 'inside';
+                $(addToAll ? 'img' : 'img.fancybox').each(function(){
+                    var $this = $(this);
+                    var title = $this.attr('title');
+                    var src = $this.attr('data-big') || $this.attr('src');
+                    var a = $('<a href="#" class="fancybox"></a>').attr('href', src).attr('title', title);
+                    $this.wrap(a);
+                });
+                if (gallery)
+                    $('a.fancybox').attr('rel', 'fancyboxgallery');
+                $('a.fancybox').fancybox({
+                    titlePosition: titlePosition
+                });
             });
+            $.noConflict();
         </script>
-        <a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
-    </div>
-    <script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
-    <script type="text/javascript" src="js/jquery-migrate-1.2.1.min.js"></script>
-    <script type="text/javascript" src="js/jquery.fancybox-1.3.4.pack.min.js"></script>
-    <script type="text/javascript">
-        $(function($){
-            var addToAll = false;
-            var gallery = true;
-            var titlePosition = 'inside';
-            $(addToAll ? 'img' : 'img.fancybox').each(function(){
-                var $this = $(this);
-                var title = $this.attr('title');
-                var src = $this.attr('data-big') || $this.attr('src');
-                var a = $('<a href="#" class="fancybox"></a>').attr('href', src).attr('title', title);
-                $this.wrap(a);
-            });
-            if (gallery)
-                $('a.fancybox').attr('rel', 'fancyboxgallery');
-            $('a.fancybox').fancybox({
-                titlePosition: titlePosition
-            });
-        });
-        $.noConflict();
-    </script>
     </body>
 </html>
